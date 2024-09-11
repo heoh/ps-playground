@@ -1,10 +1,14 @@
 import datetime
 import io
+import os
+import re
 import runpy
 import textwrap
 import unittest
 from contextlib import redirect_stdout, nullcontext
 from .util import redirect_stdin, timeout, memory_limit
+
+USER_SUFFIX = os.environ.get('USER_SUFFIX' ,'')
 
 
 class Time(datetime.timedelta):
@@ -41,3 +45,10 @@ class PSTestCase(unittest.TestCase):
 
     def refine(self, s: str) -> str:
         return textwrap.dedent(s).strip()
+
+
+def parse_testpath(filepath: str) -> tuple[str, str]:
+    base_dir = os.path.dirname(filepath)
+    filename = os.path.basename(filepath)
+    problem_name = re.match(r'^(.*)_test\.py$', filename).group(1)
+    return base_dir, problem_name
