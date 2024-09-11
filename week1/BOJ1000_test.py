@@ -1,5 +1,5 @@
 import unittest
-from common.util import PSTestCase, Time, MemorySize
+from common.unittest import PSTestCase, Time, MemorySize
 
 class BOJ1000(PSTestCase):
     problem_url = 'https://www.acmicpc.net/problem/1000'
