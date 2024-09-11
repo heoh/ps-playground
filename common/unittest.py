@@ -16,8 +16,16 @@ class Time(datetime.timedelta):
 
 
 class MemorySize:
-    def __init__(self, mb: float = None) -> None:
-        self._size = int(mb * 1024 * 1024)
+    def __init__(self,
+                 b: int = None,
+                 kb: float = None,
+                 mb: float = None,
+                 gb: float = None) -> None:
+        self._size = 0
+        self._size += b if b else 0
+        self._size += int(kb * 1024**1) if kb else 0
+        self._size += int(mb * 1024**2) if mb else 0
+        self._size += int(gb * 1024**3) if gb else 0
 
     @property
     def size(self) -> int:
