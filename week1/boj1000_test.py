@@ -1,13 +1,10 @@
 import unittest
-from common.unittest import USER_SUFFIX, PSTestCase, Time, MemorySize, parse_testpath
+from pstest import PSTestCase, Time, MemorySize
 
-base_dir, problem_name = parse_testpath(__file__)
-
-class BOJ1000(PSTestCase):
+class BOJ1000Test(PSTestCase):
     problem_url = 'https://www.acmicpc.net/problem/1000'
-    time_limit = Time(seconds=1)
+    time_limit = Time(seconds=2)
     memory_limit = MemorySize(mb=128)
-    main = f'{base_dir}/{problem_name}{USER_SUFFIX}.py'
 
     def test_case1(self):
         input = """

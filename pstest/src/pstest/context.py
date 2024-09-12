@@ -1,17 +1,18 @@
 import contextlib
 import resource
 import signal
+from contextlib import redirect_stdout, nullcontext
 
 
 class redirect_stdin(contextlib._RedirectStream):
     """Context manager for temporarily receiving stdin from another source."""
-    _stream = 'stdin'
+    _stream = "stdin"
 
 
 @contextlib.contextmanager
 def timeout(seconds: float):
     def _handler(signum, frame):
-        raise TimeoutError('Time Limit Exceeded')
+        raise TimeoutError("Time Limit Exceeded")
     signal.signal(signal.SIGALRM, _handler)
     signal.setitimer(signal.ITIMER_REAL, seconds)
 

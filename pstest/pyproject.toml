@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pstest"
+version = "0.1.0"
+description = "Test toolset for Problem Solving"
+readme = "README.md"
+license = { file = "LICENSE" }
+dependencies = []
